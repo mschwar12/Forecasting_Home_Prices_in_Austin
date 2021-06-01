@@ -1,34 +1,28 @@
-# Predicting Housing Prices in King County, WA, Using Multiple Linear Regression
+# Forecasting Home Prices in Austin, TX Using Time-Series Modeling
 
 **Author**: [Matt Schwartz](mailto:mtschwart@gmail.com)
 
 ## Overview 
 
-The following report provides data and analysis on housing prices in King County, Washington State, and details a number of multiple regression models used to predict these prices. 
+The following report provides data and analysis on the Austin housing market, and uses time series models to forecast future home prices to calculate growth rates among zip codes. 
 
 ## Business Problem
 
-Buying a home can be a frustrating process. Everyone has some idea of their dream home, but when it comes down to actually buying one, chances are there are blockers to getting the exact one you want. Maybe the square footage isn't right, or you wish it had another bedroom, or you simply don't have enough cash on hand to cover the down payment. Whatever it is, the process is long and arduous and requires lots of research.
+Austin, TX is the fastest growing city in the country. [From 2019 to 2020, the city saw its population grow by 3%, the largest among metropolitan areas with at least 1 million people.](https://www.bizjournals.com/austin/news/2021/05/04/census-data-austin-metro-population.html). As a consultant for an Austin-based real estate investment firm, I will be advising on what 5 zip codes to invest their money in. For the purposes of accurate forecasting, we'll be forecasting 2-year growth rates, using predicted prices for 2018 and 2019.
 
-As a prospective home buyer, one of the last things you'd want to do is overpay for that home. It's hard to know when you're getting fleeced, especially when you're really desparate to buy. This project is meant to help buyers not overpay for their home. By building a reliable prediction engine, we can help new home buyers know if they're getting a good price. We'd also be able to tell them what factors influence prices, and by how much. In theory, waterfront property will be cost more, but by how much? Does a house that's been renovated have much higher prices than those that haven't? How about how old the house is, or the zipcode in which it was built?
+What makes a zip code a top 5 zip code? For this firm, it pure growth rate. The higher the growth rate, the better. With such a short time horizon of two years, the firm is willing to take big swings to produce higher returns for their investors. Using monthly data from 2010 - 2017, we'll create a time series model to help us forecast what prices would be in 2018 and 2019. The zip codes with the highest growth from 2017 to 2019 will be the optimal investments for this firm.
 
-The following will attempt to build a prediction engine that prospective home buyers can use when searching for ideal home. In the future, this model can be used as the backbone for an app or website, in which you can input the information of a house that is on sale, predict what the market price should be, and compare it to listings across the internet on sites like Zillow.
+We'll also explore the housing market in the broader metro area, and look at how Austin prices and growth compares to other major cities.
 
 ## Data
 
-The data in this project comes from King County of Washington State. The county includes both Seattle and Bellevue, so we're looking at a large number of houses - over 21K. The dependent variable in this analysis will be home prices.
+The data in this project comes from Zillow Research. There are nearly 15K zip codes, about 35% of the total in the U.S. Other variables include
 
-To help predict the price, we will be using the following explanatory variables:
-
-- Rooms
-- Square footage in each house, and the square footage of the houses' 15 closest neighbors
-- Year built
-- Year renovated (if applicable)
-- Condition (overall condition of the house)
-- Grade (overall grade given to each house by the King County Grading System)
-- Zipcode
-- Latitude and longitude
-- Using these variables, and others I create, I will attempt to create a quality model (defined by satisfying the assumptions of linear regression, a high R2, and a low root mean squared error) that can accurately predict the price of a house and also provide clarity into how different variables affect the price.
+- City
+- State
+- Count
+- Metro Area
+- Size rank (population size relative to others)
 
 ## Methods
 
@@ -38,31 +32,25 @@ In addition, we create a number of variables based on our existing data. These i
 
 ## Results
 
-Our final model, which included zipcodes, improved the R2 value by 16 percentage points over our baseline model. It also reduced root mean squared error by $26K. 
+We'll use time-series modeling (SARIMAX) to forecast future home prices using the price data from 2010 - 2017 (as to avoid major effects of the recession).
 
-Baseline Model:
+Top 5 Fastest Growing Zip Codes:
 
-![baseline model](/images/benchmark_model_results.png)
-
-Final Model:
-
-![final model](/images/final_model_results.png)
-
-In addition, we calculated the impact that each independent variable had on price. These findings include:
-
-  - A one unit increase square footage increases price by 19% on average, holding all else equal.
-  - An extra year of age decreases price by an average of about 1.4%.
-  - One extra mile further from downtown decreases price by an average of about 13%.
-  - A house on the waterfront is 72% more expensive than a house that isn't, on average.
-
+1) 78744 - South East Austin (Airport)
+2) 78721 - East Austin
+3) 78753 - North Austin (North Lamar)
+4) 78741 - Riverside
+5) 78724 - North East Austin (Daffan)
 
 ## Conclusions
 
-Our final model has good predicitive power - as mentioned above, it accounts for over 80% of the variation in price - but does have some issues. It's very heteroscedastic, meaning the residuals are not randomly distributed, and the root mean squared error, although much smaller than we started, is still $85K, meaning that each prediction has an average error of $85K. There is future work to be done. 
+- Zip codes notably do not include downtown or other up and coming locations like Mueller
+- All of East Austin has great investment potential
+- The growth rates in the top 5 Zip codes are all over 30%, with some eclipsing 40%.
 
 ## Further Analysis
 
-In the future, the main goal would be to gather more data to eliminate hidden variable bias. There are likely many more factors that influence housing price which we are not capturing in our models. Doing so would reduce our errors, improve prediction power, and create a prediction engine powerful enough to support a new application or website.
+In the future, I want to dive into what makes these zip codes such high-growth areas. What sort of developments, schools, and other infratructure are contributing to the growth rates? This can help the firm on a more granular level explain why, for example, East Austin is taking off, beyond what you can see with your eyes.
 
 ## For More Information
 
@@ -80,9 +68,9 @@ For any questions, please contact Matt Schwartz at [mtschwart@gmail.com](mailto:
 ├── .canvas
 ├── .gitignore
 ├── CONTRIBUTING.md
-├── King_County_Home_Price_Predictions_Presentation.pdf
+├── Forecasting_Austin_Home_Prices.pdf
 ├── Link_to_Presentation_Recording.docx
-├── Predicting_Housing_Prices_In_King_County.ipynb
-├── Predicting_Housing_Prices_In_King_County_Jupyter_Notebook.pdf
+├── Forecasting Growth Rates in the Austin Housing Market.ipynb
+├── Forecasting Growth Rates in the Austin Housing Market_Jupyter_Notebook.pdf
 ├── README.md
 ```
