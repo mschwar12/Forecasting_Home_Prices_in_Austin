@@ -68,9 +68,8 @@ For any questions, please contact Matt Schwartz at [mtschwart@gmail.com](mailto:
 ├── .canvas
 ├── .gitignore
 ├── CONTRIBUTING.md
-├── Forecasting_Austin_Home_Prices.pdf
-├── Link_to_Presentation_Recording.docx
 ├── Forecasting Growth Rates in the Austin Housing Market.ipynb
 ├── Forecasting Growth Rates in the Austin Housing Market_Jupyter_Notebook.pdf
+├── Forecasting_Austin_Home_Prices.pdf
 ├── README.md
 ```
